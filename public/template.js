@@ -11,6 +11,7 @@ var SCREEN_WIDTH = 1100;
 var SCREEN_HEIGHT = 700;
 var container,stats;
 var camera, scene1, renderer;
+var arrowHelper;
 var mouseX = 0, mouseY = 0;
 var windowHalfX = SCREEN_WIDTH / 2;
 var windowHalfY = SCREEN_HEIGHT / 2;
@@ -69,7 +70,7 @@ function init() {
     mesh2.position.y += 50;
     scene1.add(mesh2);
 
-    var degrees = 330;
+    var degrees = 215;
 
     if (degrees > 65 && degrees < 180)
     {
@@ -84,12 +85,6 @@ function init() {
     console.log(Math.cos(radDir));
     console.log(xIn);
     yIn = Math.sin(radDir)*5200 - 85;
-    if(degrees< 280 && degrees > 90) {
-      yIn -= 300;
-    }
-    if(degrees< 330 && degrees > 280) {
-      yIn -= 200;
-    }
     console.log(yIn);
 
     //the origin of the compass on the texture has an offset x of 150 and extended y of 300
@@ -98,7 +93,7 @@ function init() {
     //    ry = 300;
     // else
     //    ry = 200;
-    var ry = 450;
+    var ry = 200;
     var x = xIn + rx;
     var y = ((yIn + ry)*yIn)/yIn;
 
@@ -106,7 +101,7 @@ function init() {
     var to = new THREE.Vector3( 0, 0, 0 );
     var direction = to.clone().sub(from);
     var length = direction.length()/3;
-    var arrowHelper = new THREE.ArrowHelper(direction.normalize(), from, length, 0x00ff00, 500, 500 );
+    arrowHelper = new THREE.ArrowHelper(direction.normalize(), from, length, 0xff0000, 1000, 1000 );
     arrowHelper.z = 200;
     scene1.add( arrowHelper );
 
@@ -123,20 +118,55 @@ function init() {
 
 function animate() {
 	requestAnimationFrame( animate );
-  placeArrow(330);
+  //placeArrow(330);
 	render();
 }
 
 function placeArrow(degrees) {
-  var rad = (degrees * Math.PI)/180;
 
-  var from = new THREE.Vector3( 2, 2, 2 );
- var to = new THREE.Vector3( 0, 0, 0 );
- var direction = to.clone().sub(from);
-  var length = direction.length()/2;
-  var arrowHelper = new THREE.ArrowHelper(direction.normalize(), from, length, 0xff0000 );
+  scene1.remove(arrowHelper);
+  if (degrees > 65 && degrees < 180)
+  {
+    degrees += (180-degrees)/25%3 + 1;
+  }
+
+  var radDir = ((degrees+90) * Math.PI)/180;
+  //var xIn = 315; //(-cos(deg+90)*5000)+65
+  //var yIn = 315; //sin(deg+90)*5000-85
+
+  xIn = (-1*Math.cos(radDir)*5000)+65;
+  console.log(Math.cos(radDir));
+  console.log(xIn);
+  yIn = Math.sin(radDir)*5200 - 85;
+  console.log(yIn);
+
+  //the origin of the compass on the texture has an offset x of 150 and extended y of 300
+  var rx = 150;
+  // if(degrees > 180)
+  //    ry = 300;
+  // else
+  //    ry = 200;
+  var ry = 200;
+  var x = xIn + rx;
+  var y = ((yIn + ry)*yIn)/yIn;
+
+  var from = new THREE.Vector3( x, y, 0 );
+  var to = new THREE.Vector3( 0, 0, 0 );
+  var direction = to.clone().sub(from);
+  var length = direction.length()/3;
+  arrowHelper = new THREE.ArrowHelper(direction.normalize(), from, length, 0xff0000, 1000, 1000 );
+  arrowHelper.z = 200;
   scene1.add( arrowHelper );
 }
+
+function degreeUpdateButtonClick() {
+
+  var degrees = parseInt(document.getElementById('degreeInput').value);
+  console.log(degrees);
+
+  placeArrow(degrees);
+
+  }
 
 function render() {
 				//camera.position.x += ( mouseX - camera.position.x ) * .05;

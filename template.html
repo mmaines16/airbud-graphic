@@ -20,7 +20,7 @@
         <div id="three-container" class="col-lg-8 three-container">
 
         </div>
-        <div class="col-lg-4 airbud-info-container">
+        <div class="col-lg-4 airbud-info-container container">
           <h3>Place info here!</h3>
           <div class="row" style="border: solid black 1px;">
             <div class="col-md-8" style="border: solid black 1px;">
@@ -29,6 +29,18 @@
             <div class="col-md-4" sytle="text-align: center;">
               <b> 90 Degrees</b>
             </div>
+          </div>
+
+          <div class="row">
+            <form class="form-inline">
+              <div class="form-group">
+                <label for="degreeInput"></label>
+                <input type="number" name="degreeInput" class="form-control" id="degreeInput" placeholder="330" min="0" max="359">
+              </div>
+              <button type="button" class="btn btn-primary" id="degreeUpdateButton" name="degreeUpdateButton" onclick="degreeUpdateButtonClick()">
+                  Update Degrees Arrow
+              </button>
+            </form>
           </div>
 
         </div>
