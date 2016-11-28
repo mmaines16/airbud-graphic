@@ -15,33 +15,73 @@
   </head>
   <body>
     <!-- <div class="container"> -->
-      <div class="row">
+      <div id="containerDiv" class="row">
 
-        <div id="three-container" class="col-lg-8 three-container">
+        <div id="three-container" class="col-lg-6 three-container container">
 
         </div>
-        <div class="col-lg-4 airbud-info-container container">
-          <h3>Place info here!</h3>
-          <div class="row" style="border: solid black 1px;">
-            <div class="col-md-8" style="border: solid black 1px;">
-              <h4>Wind Direction</h4>
-            </div>
-            <div class="col-md-4" sytle="text-align: center;">
-              <b> 90 Degrees</b>
+        <div class="col-lg-6 airbud-info-container container">
+          <div class="row">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h2>Weather Information</h2>
+              </div>
+              <div class="panel-body">
+                <div class="row" style="border: solid black 1px;">
+                  <div class="col-md-6" style="border-right: solid black 1px;">
+                    <b>Wind Direction</b>
+                  </div>
+                  <div class="col-md-4" sytle="text-align: center;">
+                    <b> <span id="windDirectionNumber">90</span> Degrees</b>
+                  </div>
+                </div>
+
+                <div class="row" style="border: solid black 1px;">
+                  <div class="col-md-6" style="border-right: solid black 1px;">
+                    <b>Wind Speed</b>
+                  </div>
+                  <div class="col-md-4" sytle="text-align: center;">
+                    <b> <span id="windSpeedNumber">15</span> Knots</b>
+                  </div>
+                </div>
+
+                <div class="row debug">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label for="degreeInput"></label>
+                      <input type="number" name="degreeInput" class="form-control" id="degreeInput" placeholder="330" value="330" min="0" max="359">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="degreeUpdateButton" name="degreeUpdateButton" onclick="degreeUpdateButtonClick()">
+                        Update Degrees Arrow
+                    </button>
+                  </form>
+                </div>
+
+                <div class="row debug">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label for="knotsInput"></label>
+                      <input type="number" name="knotsInput" class="form-control" id="knotsInput" placeholder="15" value="15" min="0" max="1000">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="knotsUpdateButton" name="knotsUpdateButton" onclick="knotsUpdateButtonClick()">
+                        Update Knots
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="row">
-            <form class="form-inline">
-              <div class="form-group">
-                <label for="degreeInput"></label>
-                <input type="number" name="degreeInput" class="form-control" id="degreeInput" placeholder="330" min="0" max="359">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <h2>Weather Warngings</h2>
               </div>
-              <button type="button" class="btn btn-primary" id="degreeUpdateButton" name="degreeUpdateButton" onclick="degreeUpdateButtonClick()">
-                  Update Degrees Arrow
-              </button>
-            </form>
+              <div class="panel-body">
+              </div>
+            </div>
           </div>
+
 
         </div>
 

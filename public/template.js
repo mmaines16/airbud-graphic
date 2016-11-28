@@ -100,8 +100,8 @@ function init() {
     var from = new THREE.Vector3( x, y, 0 );
     var to = new THREE.Vector3( 0, 0, 0 );
     var direction = to.clone().sub(from);
-    var length = direction.length()/3;
-    arrowHelper = new THREE.ArrowHelper(direction.normalize(), from, length, 0xff0000, 1000, 1000 );
+    var length = direction.length()/2;
+    arrowHelper = new THREE.ArrowHelper(direction.normalize(), from, length, 0xff0000, 2000, 2000 );
     arrowHelper.z = 200;
     scene1.add( arrowHelper );
 
@@ -153,8 +153,8 @@ function placeArrow(degrees) {
   var from = new THREE.Vector3( x, y, 0 );
   var to = new THREE.Vector3( 0, 0, 0 );
   var direction = to.clone().sub(from);
-  var length = direction.length()/3;
-  arrowHelper = new THREE.ArrowHelper(direction.normalize(), from, length, 0xff0000, 1000, 1000 );
+  var length = direction.length()/2.5;
+  arrowHelper = new THREE.ArrowHelper(direction.normalize(), from, length, 0xff0000, 1750, 1750 );
   arrowHelper.z = 200;
   scene1.add( arrowHelper );
 }
@@ -164,8 +164,22 @@ function degreeUpdateButtonClick() {
   var degrees = parseInt(document.getElementById('degreeInput').value);
   console.log(degrees);
 
+  var degreeSpan = document.getElementById('windDirectionNumber');
+  degreeSpan.innerHTML = degrees.toString();
+
   placeArrow(degrees);
 
+  }
+
+  function knotsUpdateButtonClick() {
+    var knotsSpan = document.getElementById('windSpeedNumber');
+    var knotsInput = document.getElementById('knotsInput').value;
+
+    console.log(knotsInput);
+    knotsSpan.innerHTML = knotsInput.toString();
+
+
+    //Maybe change arrow size here...
   }
 
 function render() {
