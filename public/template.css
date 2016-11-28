@@ -1,0 +1,20 @@
+body {
+				color: #000;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+				background-color: #fff;
+				margin: 0px;
+				padding: 0px;
+				overflow: hidden;
+			}
+
+.three-container {
+  height: 100%;
+  border: black solid 1px;
+}
+
+.airbud-info-container {
+  height: 100%;
+  border: black solid 1px;
+}

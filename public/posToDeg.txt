@@ -1,0 +1,37 @@
+0 5000 = 0
+
+3750 3750 = 45
+
+5200 0 = 90
+
+3750 -3750 = 135
+
+180 -5400 = 180
+
+-3400 -3750 = 225
+
+-5000 0 = 270
+
+-3400 3750 = 315
+
+
+
+
+left vs right factor (x direction) 1.103
+
+
+right side y diff (5 deg) = 500
+right side x diff (5 deg) = 250
+
+
+2nd quad 1deg change y = y-100
+
+2nd quad 5deg change x = x + 100
+
+
+
+
+BIGGER TEXT 
+BIGGER ARROWS
+RED ARROWS
+ACCURATE within 10 degrees
