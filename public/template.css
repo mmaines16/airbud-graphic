@@ -15,7 +15,7 @@ body {
 
 
 .debug {
-  display: none; /*Uncomment if you want to have contorl of changing arrow degree and color*/
+  /*display: none; /*Uncomment if you want to have contorl of changing arrow degree and color*/*/
 }
 
 .three-container {
@@ -49,4 +49,12 @@ body {
 
 #knotsUpdateButton {
   min-width: 300px;
+}
+
+#flipRunwayButton {
+  min-width: 500px;
+}
+
+.weather-warning, h1{
+  color: red;
 }

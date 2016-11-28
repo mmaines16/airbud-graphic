@@ -16,6 +16,8 @@ var mouseX = 0, mouseY = 0;
 var windowHalfX = SCREEN_WIDTH / 2;
 var windowHalfY = SCREEN_HEIGHT / 2;
 
+var mesh3;
+
 var runwayDirectionDeg = 330;
 
 var rad = (runwayDirectionDeg * Math.PI)/180;
@@ -42,8 +44,10 @@ function init() {
   // var maxAnisotropy = renderer.getMaxAnisotropy();
   var texture1 = textureLoader.load("compassTexture.jpg");
   var texture2 = textureLoader.load("landingStrip.jpg");
+  var texture3 = textureLoader.load("planeImage.jpg");
   var material1 = new THREE.MeshPhongMaterial( { color: 0xffffff, map: texture1 } );
   var material2 = new THREE.MeshPhongMaterial( { color: 0xffffff, map: texture2 } );
+  var material3 = new THREE.MeshPhongMaterial( { color: 0xffffff, map: texture3 } );
   //texture1.anisotropy = maxAnisotropy;
   //texture1.wrapS = texture1.wrapT = THREE.RepeatWrapping;
   //texture1.repeat.set( 512, 512 );
@@ -57,8 +61,10 @@ function init() {
   				//
     var geometry = new THREE.PlaneBufferGeometry( 125, 125 );
     var geometry2 = new THREE.PlaneBufferGeometry( 25, 50 );
+    var geometry3 = new THREE.PlaneBufferGeometry( 60, 60 );
     var mesh1 = new THREE.Mesh( geometry, material1 );
     var mesh2 = new THREE.Mesh( geometry, material2 );
+    mesh3 = new THREE.Mesh( geometry3, material3 );
     //mesh1.rotation.x = - Math.PI / 2;
     mesh1.scale.set( 100, 100, 100 );
     scene1.add( mesh1 );
@@ -70,7 +76,14 @@ function init() {
     mesh2.position.y += 50;
     scene1.add(mesh2);
 
-    var degrees = 215;
+    mesh3.scale.set(30, 65, 25);
+    //mesh2.rotation.z =  Math.PI / 7;
+    mesh3.rotation.z =  - (rad);
+    mesh3.position.x += 50;
+    mesh3.position.y += 50;
+    scene1.add(mesh3);
+
+    var degrees = 90;
 
     if (degrees > 65 && degrees < 180)
     {
@@ -120,6 +133,12 @@ function animate() {
 	requestAnimationFrame( animate );
   //placeArrow(330);
 	render();
+}
+
+//Rotates the plane image 180 degrees to use the oposite runway
+function changeRunway()
+{
+  mesh3.rotation.z -= Math.PI;
 }
 
 function placeArrow(degrees) {
